@@ -1,0 +1,11 @@
+{
+  "routes": {
+    "/portfolioIman": {},
+    "/portfolioIman/about": {},
+    "/portfolioIman/contact": {},
+    "/portfolioIman/header": {},
+    "/portfolioIman/hero": {},
+    "/portfolioIman/projects": {},
+    "/portfolioIman/skills": {}
+  }
+}
