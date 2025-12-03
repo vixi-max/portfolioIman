@@ -1,0 +1,442 @@
+// Variables de couleurs
+$black: #000000;
+$white: #ffffff;
+$gray: #1a1a1a;
+$dark-gray: #0a0a0a;
+$pink: #ff2a92;
+$pink-glow: rgba(255, 42, 146, 0.6);
+$blue: #2a7fff;
+$blue-glow: rgba(42, 127, 255, 0.6);
+
+.quantum-projects {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, $dark-gray 0%, $black 100%);
+  overflow: hidden;
+  color: $white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  // Fond quantique (identique à la page contact)
+  .quantum-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    .quantum-particle {
+      position: absolute;
+      background: rgba($white, 0.3);
+      border-radius: 50%;
+      animation: quantumFloat 20s infinite ease-in-out;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba($pink, 0.2) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        animation: particlePulse 6s infinite ease-in-out;
+      }
+    }
+    
+    .quantum-wave {
+      position: absolute;
+      width: 200%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, $pink, transparent);
+      opacity: 0.1;
+      animation: waveMove 15s infinite linear;
+      
+      &:nth-child(2) {
+        animation-delay: 3s;
+        animation-duration: 12s;
+      }
+      
+      &:nth-child(3) {
+        animation-delay: 7s;
+        animation-duration: 18s;
+      }
+    }
+    
+    .quantum-orbits {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      
+      .orbit {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background: $pink;
+        border-radius: 50%;
+        box-shadow: 0 0 20px $pink-glow;
+        animation: orbitSpin 15s infinite linear;
+        
+        &:nth-child(1) {
+          animation-delay: 0s;
+          animation-duration: 12s;
+        }
+        
+        &:nth-child(2) {
+          animation-delay: 3s;
+          animation-duration: 18s;
+        }
+        
+        &:nth-child(3) {
+          animation-delay: 6s;
+          animation-duration: 15s;
+        }
+      }
+    }
+  }
+
+  // Conteneur principal
+  .projects-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  // En-tête
+  .projects-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    .main-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, $white 0%, $pink 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba($white, 0.8);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  // Filtres
+  .projects-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    
+    .filter-btn {
+      padding: 0.8rem 1.5rem;
+      background: rgba($white, 0.05);
+      border: 1px solid rgba($white, 0.1);
+      border-radius: 25px;
+      color: rgba($white, 0.8);
+      font-size: 0.95rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: rgba($pink, 0.1);
+        border-color: rgba($pink, 0.3);
+        color: $white;
+        transform: translateY(-2px);
+      }
+      
+      &.active {
+        background: rgba($pink, 0.2);
+        border-color: rgba($pink, 0.4);
+        color: $white;
+        box-shadow: 0 0 20px $pink-glow;
+      }
+    }
+  }
+
+  // Grille de projets
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  // Carte de projet
+  .quantum-project-card {
+    background: rgba($dark-gray, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba($white, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    &:hover {
+      transform: translateY(-10px);
+      border-color: rgba($pink, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      
+      .project-overlay {
+        opacity: 1;
+      }
+    }
+    
+    .project-image {
+      position: relative;
+      height: 250px;
+      background: linear-gradient(135deg, rgba($dark-gray, 0.8) 0%, rgba($black, 0.9) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      
+      .image-placeholder {
+        font-size: 4rem;
+        color: rgba($pink, 0.3);
+      }
+      
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($black, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        
+        .project-links {
+          display: flex;
+          gap: 1rem;
+          
+          .project-link {
+            width: 50px;
+            height: 50px;
+            background: rgba($pink, 0.2);
+            border: 1px solid rgba($pink, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              background: rgba($pink, 0.3);
+              transform: scale(1.1);
+              box-shadow: 0 0 20px $pink-glow;
+            }
+          }
+        }
+      }
+    }
+    
+    .project-content {
+      padding: 2rem;
+      
+      .project-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $white;
+      }
+      
+      .project-description {
+        color: rgba($white, 0.8);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+      }
+      
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        
+        .tech-tag {
+          padding: 0.4rem 0.8rem;
+          background: rgba($pink, 0.1);
+          border: 1px solid rgba($pink, 0.2);
+          border-radius: 15px;
+          color: rgba($white, 0.9);
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+      }
+
+      .project-achievements {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba($white, 0.1);
+        
+        .achievement-text {
+          color: rgba($white, 0.7);
+          font-size: 0.9rem;
+          line-height: 1.8;
+          margin: 0.3rem 0;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  // CTA Section
+  .projects-cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba($dark-gray, 0.5);
+    border-radius: 20px;
+    border: 1px solid rgba($white, 0.1);
+    
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: $white;
+    }
+    
+    p {
+      color: rgba($white, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, rgba($pink, 0.2) 0%, rgba($blue, 0.2) 100%);
+      border: 1px solid rgba($pink, 0.3);
+      border-radius: 50px;
+      color: $white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: linear-gradient(135deg, rgba($pink, 0.3) 0%, rgba($blue, 0.3) 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba($pink, 0.3);
+      }
+    }
+  }
+
+  // Overlay quantique
+  .quantum-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba($pink, 0.1) 0%,
+      transparent 30%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 3;
+    
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  // Animations (reprises de contact)
+  @keyframes quantumFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(20px, -15px) rotate(5deg); }
+    50% { transform: translate(-15px, 10px) rotate(-5deg); }
+    75% { transform: translate(-20px, 15px) rotate(3deg); }
+  }
+
+  @keyframes particlePulse {
+    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  @keyframes waveMove {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+
+  @keyframes orbitSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateX(140px) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) translateX(140px) rotate(-360deg); }
+  }
+
+  // Responsive
+  @media (max-width: 968px) {
+    padding: 2rem 1rem;
+    
+    .projects-header {
+      .main-title {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .projects-filter {
+      .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .projects-header {
+      .main-title {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+    
+    .quantum-project-card {
+      .project-content {
+        padding: 1.5rem;
+      }
+    }
+    
+    .projects-cta {
+      padding: 2rem 1rem;
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

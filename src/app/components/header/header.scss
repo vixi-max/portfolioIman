@@ -1,0 +1,395 @@
+// Variables de couleurs
+$black: #000000;
+$white: #ffffff;
+$gray: #1a1a1a;
+$dark-gray: #0a0a0a;
+$pink: #ff2a92;
+$pink-glow: rgba(255, 42, 146, 0.6);
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+.quantum-glass-header {
+  position: relative;
+  width: 100%;
+  padding: 1.8rem 2.5rem;
+  background: rgba($dark-gray, 0.65);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 1px solid rgba($white, 0.08);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  // Effet de verre sophistiqué
+  .glass-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .glass-reflection {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 60%
+    );
+    opacity: 0.3;
+    animation: rotateReflection 30s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  // Champ quantique de particules
+  .quantum-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    
+    .quantum-particle {
+      position: absolute;
+      background: rgba($white, 0.4);
+      border-radius: 50%;
+      animation: quantumFloat 15s infinite ease-in-out;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(circle, rgba($pink, 0.3) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        opacity: 0;
+        animation: particlePulse 4s infinite ease-in-out;
+      }
+    }
+  }
+  
+  // Orbites quantiques
+  .quantum-orbits {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+    
+    .orbit {
+      position: absolute;
+      border: 1px solid rgba($white, 0.03);
+      border-radius: 50%;
+      animation: orbitRotate 20s infinite linear;
+      
+      &:nth-child(1) {
+        top: 25%;
+        left: 25%;
+        width: 50px;
+        height: 50px;
+        animation-delay: 0s;
+        animation-duration: 15s;
+      }
+      
+      &:nth-child(2) {
+        top: 60%;
+        left: 70%;
+        width: 30px;
+        height: 30px;
+        animation-delay: 2s;
+        animation-duration: 12s;
+        animation-direction: reverse;
+      }
+      
+      &:nth-child(3) {
+        top: 10%;
+        left: 80%;
+        width: 70px;
+        height: 70px;
+        animation-delay: 5s;
+        animation-duration: 25s;
+      }
+    }
+  }
+  
+  // Navigation quantique innovante
+  .quantum-nav {
+    position: relative;
+    z-index: 10;
+    
+    .nav-container {
+      display: flex;
+      gap: 2.2rem;
+      position: relative;
+    }
+    
+    .quantum-nav-item {
+      position: relative;
+      color: rgba($white, 0.7);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 1.2px;
+      padding: 0.7rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border-radius: 12px;
+      overflow: hidden;
+      isolation: isolate;
+      
+      // Effet de brillance
+      .nav-glow {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba($white, 0.1),
+          transparent
+        );
+        transition: left 0.7s ease;
+        z-index: -1;
+      }
+      
+      // Point quantique
+      .nav-dot {
+        position: absolute;
+        top: 50%;
+        left: 0.5rem;
+        width: 6px;
+        height: 6px;
+        background: rgba($white, 0.4);
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+      }
+      
+      // Connexion quantique
+      .quantum-connection {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $pink, transparent);
+        transform: translateX(-50%);
+        transition: width 0.4s ease;
+      }
+      
+      &:hover {
+        color: $white;
+        background: rgba($white, 0.03);
+        
+        .nav-glow {
+          left: 100%;
+        }
+        
+        .nav-dot {
+          background: $pink;
+          box-shadow: 0 0 8px $pink-glow;
+          transform: translateY(-50%) scale(1.5);
+        }
+        
+        .quantum-connection {
+          width: 80%;
+        }
+        
+        .nav-text {
+          text-shadow: 0 0 10px rgba($white, 0.5);
+        }
+      }
+      
+      &.active {
+        color: $white;
+        background: rgba($white, 0.05);
+        
+        .nav-dot {
+          background: $pink;
+          box-shadow: 0 0 10px $pink-glow;
+          animation: quantumPulse 2s infinite;
+        }
+        
+        .quantum-connection {
+          width: 100%;
+          background: linear-gradient(90deg, transparent, $pink, $pink, transparent);
+          height: 2px;
+          box-shadow: 0 0 10px $pink-glow;
+        }
+        
+        .nav-text {
+          text-shadow: 0 0 15px rgba($pink, 0.7);
+        }
+      }
+      
+      .nav-text {
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  
+  // Effet de superposition quantique
+  .quantum-state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba($pink, 0.15) 0%,
+      transparent 30%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 5;
+    
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+// Animations
+@keyframes quantumFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(15px, -10px) scale(1.2);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-10px, 15px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(-15px, -5px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes particlePulse {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes orbitRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateReflection {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes quantumPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 5px $pink-glow;
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 15px $pink-glow;
+  }
+}
+
+// Responsive
+@media (max-width: 968px) {
+  .quantum-glass-header {
+    padding: 1.5rem 2rem;
+    
+    .quantum-nav .nav-container {
+      gap: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .quantum-glass-header {
+    padding: 1.2rem 1.5rem;
+    
+    .quantum-nav .nav-container {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      .quantum-nav-item {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .quantum-orbits {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .quantum-glass-header {
+    padding: 1rem;
+    
+    .quantum-nav .nav-container {
+      gap: 0.8rem;
+      
+      .quantum-nav-item {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        
+        .nav-dot {
+          left: 0.3rem;
+          width: 4px;
+          height: 4px;
+        }
+      }
+    }
+  }
+}

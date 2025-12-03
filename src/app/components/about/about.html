@@ -1,0 +1,81 @@
+<div class="quantum-about">
+  <!-- Effet de fond quantique -->
+  <div class="quantum-background">
+    <div class="quantum-particle" *ngFor="let particle of particles" [ngStyle]="{
+      'width.px': particle.size,
+      'height.px': particle.size,
+      'top.%': particle.top,
+      'left.%': particle.left,
+      'animation-delay.s': particle.animationDelay
+    }"></div>
+    <div class="quantum-wave"></div>
+    <div class="quantum-wave"></div>
+  </div>
+
+  <!-- Conteneur principal -->
+  <div class="about-container">
+    <!-- Section image avec effet quantique -->
+    <div class="image-section">
+      <div class="quantum-portal">
+        <div class="portal-ring"></div>
+        <div class="portal-ring"></div>
+        <div class="portal-core">
+         <img src="assets/imona.jpg" alt="Imona" class="profile-image">
+
+        </div>
+        <div class="quantum-orbits">
+          <div class="orbit" *ngFor="let orbit of orbits"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section texte -->
+    <div class="text-section">
+      <div class="quantum-card">
+        <h1 class="quantum-title">
+          <span class="title-text">À Propos de Moi</span>
+          <span class="title-glow"></span>
+        </h1>
+        
+        <div class="quantum-bio">
+          <p class="bio-text" [class.animate]="textVisible">
+             Je m'appelle <strong>Imane Bouhabba</strong> et je suis <strong>ingénieure en informatique</strong>. 
+            Passionné par l'innovation et la création, je suis constamment à la recherche 
+            de nouvelles façons de repousser les limites du design et de la technologie.
+            Je mets mes compétences au service de projets ambitieux et créatifs.
+          </p>
+          
+          <div class="quantum-skills">
+            <h2 class="skills-title">Mes Domaines d'Expertise</h2>
+            <div class="skills-grid">
+              <div class="skill-item" *ngFor="let skill of skills">
+                <div class="skill-dot"></div>
+                <span class="skill-name">{{skill}}</span>
+                <div class="skill-level">
+                  <div class="skill-progress" [style.width.%]="getSkillLevel(skill)"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quantum-stats">
+            <div class="stat-item" *ngFor="let stat of stats">
+              <div class="stat-number">{{stat.value}}+</div>
+              <div class="stat-label">{{stat.label}}</div>
+              <div class="stat-glow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Élément de connexion quantique -->
+    <div class="quantum-connection">
+      <div class="connection-line"></div>
+      <div class="connection-node"></div>
+    </div>
+  </div>
+
+  <!-- Effet de superposition quantique -->
+  <div class="quantum-overlay" [class.active]="isHovered"></div>
+</div>

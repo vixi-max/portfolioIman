@@ -1,0 +1,505 @@
+// Variables de couleurs
+$black: #000000;
+$white: #ffffff;
+$dark-gray: #0a0a0a;
+$gray: #1a1a1a;
+$light-gray: #2d2d2d;
+$pink: #ff2a92;
+$pink-glow: rgba(255, 42, 146, 0.6);
+
+.quantum-skills {
+  position: relative;
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, $dark-gray 0%, $black 100%);
+  overflow: hidden;
+  
+  // Fond quantique
+  .quantum-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    .quantum-particle {
+      position: absolute;
+      background: rgba($white, 0.3);
+      border-radius: 50%;
+      animation: quantumFloat 20s infinite ease-in-out;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba($pink, 0.2) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        animation: particlePulse 6s infinite ease-in-out;
+      }
+    }
+    
+    .quantum-wave {
+      position: absolute;
+      width: 200%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, $pink, transparent);
+      opacity: 0.1;
+      animation: waveMove 15s infinite linear;
+      
+      &:nth-child(2) {
+        top: 40%;
+        animation-delay: 5s;
+      }
+      
+      &:nth-child(3) {
+        top: 80%;
+        animation-delay: 10s;
+      }
+    }
+  }
+  
+  // Conteneur principal
+  .skills-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+  
+  // En-tête
+  .skills-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    .quantum-title {
+      position: relative;
+      font-size: 3rem;
+      font-weight: 300;
+      color: $white;
+      margin-bottom: 1rem;
+      
+      .title-text {
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 0 20px rgba($pink, 0.5);
+      }
+      
+      .title-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        filter: blur(50px);
+        opacity: 0.3;
+        z-index: 1;
+      }
+    }
+    
+    .skills-subtitle {
+      color: rgba($white, 0.7);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+  }
+  
+  // Statistiques
+  .quantum-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    
+    .stat-item {
+      position: relative;
+      text-align: center;
+      padding: 2rem;
+      background: rgba($white, 0.03);
+      border-radius: 20px;
+      border: 1px solid rgba($white, 0.05);
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: $pink;
+        text-shadow: 0 0 15px $pink-glow;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+        color: rgba($white, 0.7);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .stat-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        filter: blur(30px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      &:hover .stat-glow {
+        opacity: 0.3;
+      }
+    }
+  }
+  
+  // Compétences en vedette
+  .featured-skills {
+    margin-bottom: 4rem;
+    
+    .section-title {
+      color: $white;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 0 10px rgba($pink, 0.3);
+    }
+    
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      
+      .featured-skill {
+        background: rgba($white, 0.02);
+        border: 1px solid rgba($white, 0.08);
+        border-radius: 15px;
+        padding: 1.5rem;
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+        
+        .skill-header {
+          display: flex;
+          justify-content: between;
+          align-items: center;
+          margin-bottom: 1rem;
+          
+          .skill-name {
+            color: $white;
+            font-size: 1.2rem;
+            font-weight: 400;
+          }
+          
+          .skill-level {
+            color: $pink;
+            font-weight: 600;
+            text-shadow: 0 0 10px $pink-glow;
+          }
+        }
+        
+        .skill-progress {
+          height: 6px;
+          background: rgba($white, 0.1);
+          border-radius: 3px;
+          overflow: hidden;
+          margin-bottom: 1rem;
+          
+          .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, $pink, #ff80c8);
+            border-radius: 3px;
+            position: relative;
+            transition: width 1.5s ease-in-out;
+            
+            .progress-glow {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 20px;
+              height: 100%;
+              background: linear-gradient(90deg, transparent, rgba($white, 0.3));
+            }
+          }
+        }
+        
+        .skill-meta {
+          display: flex;
+          gap: 1rem;
+          
+          .meta-item {
+            color: rgba($white, 0.6);
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  
+  // Catégories de compétences
+  .skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    
+    .category {
+      background: rgba($white, 0.03);
+      border: 1px solid rgba($white, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+      
+      .category-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        
+        .category-icon {
+          font-size: 2rem;
+        }
+        
+        .category-title {
+          color: $white;
+          font-size: 1.4rem;
+          font-weight: 400;
+        }
+      }
+      
+      .skills-list {
+        .skill-item {
+          margin-bottom: 1.5rem;
+          
+          .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            
+            .skill-name {
+              color: rgba($white, 0.9);
+              font-weight: 300;
+            }
+            
+            .skill-percentage {
+              color: $pink;
+              font-weight: 600;
+              text-shadow: 0 0 5px $pink-glow;
+            }
+          }
+          
+          .skill-track {
+            height: 4px;
+            background: rgba($white, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            
+            .skill-progress {
+              height: 100%;
+              border-radius: 2px;
+              position: relative;
+              transition: width 1.5s ease-in-out;
+              
+              .progress-dot {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 8px;
+                height: 8px;
+                background: $white;
+                border-radius: 50%;
+                transform: translate(50%, -50%);
+                box-shadow: 0 0 10px currentColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  // CTA
+  .skills-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba($white, 0.02);
+    border: 1px solid rgba($white, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    
+    h2 {
+      color: $white;
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba($pink, 0.3);
+    }
+    
+    p {
+      color: rgba($white, 0.7);
+      margin-bottom: 2rem;
+    }
+    
+    .quantum-btn {
+      position: relative;
+      background: rgba($pink, 0.2);
+      border: 1px solid rgba($pink, 0.3);
+      color: $white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      
+      .btn-glow {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba($white, 0.2),
+          transparent
+        );
+        transition: left 0.7s ease;
+      }
+      
+      &:hover {
+        background: rgba($pink, 0.3);
+        box-shadow: 0 0 20px rgba($pink, 0.5);
+        
+        .btn-glow {
+          left: 100%;
+        }
+      }
+    }
+  }
+  
+  // Overlay quantique
+  .quantum-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba($pink, 0.1) 0%,
+      transparent 50%
+    );
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// Animations
+@keyframes quantumFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+  25% { transform: translate(15px, -10px) rotate(5deg); opacity: 0.6; }
+  50% { transform: translate(-10px, 15px) rotate(-5deg); opacity: 0.4; }
+  75% { transform: translate(-15px, -5px) rotate(3deg); opacity: 0.5; }
+}
+
+@keyframes particlePulse {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes fadeInUp {
+  0% { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 968px) {
+  .quantum-skills {
+    padding: 2rem 1rem;
+    
+    .skills-header .quantum-title {
+      font-size: 2.5rem;
+    }
+    
+    .quantum-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .skills-categories {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .quantum-skills {
+    .quantum-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .featured-skills .featured-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .skills-cta {
+      padding: 2rem 1rem;
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .quantum-skills {
+    padding: 1.5rem 1rem;
+    
+    .skills-header {
+      .quantum-title {
+        font-size: 2rem;
+      }
+      
+      .skills-subtitle {
+        font-size: 1rem;
+      }
+    }
+    
+    .category {
+      padding: 1.5rem;
+    }
+  }
+}

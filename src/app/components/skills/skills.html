@@ -1,0 +1,104 @@
+<div class="quantum-skills">
+  <!-- Fond quantique avec particules -->
+  <div class="quantum-background">
+    <div class="quantum-particle" 
+         *ngFor="let particle of particles"
+         [ngStyle]="{
+           'width.px': particle.size,
+           'height.px': particle.size,
+           'top.%': particle.top,
+           'left.%': particle.left,
+           'animation-delay.s': particle.animationDelay,
+           'animation-duration.s': particle.duration
+         }">
+    </div>
+    <div class="quantum-wave"></div>
+    <div class="quantum-wave"></div>
+  </div>
+
+  <!-- Conteneur principal -->
+  <div class="skills-container">
+    <!-- En-tête -->
+    <div class="skills-header">
+      <h1 class="quantum-title">
+        <span class="title-text">Mes Compétences</span>
+        <span class="title-glow"></span>
+      </h1>
+      <p class="skills-subtitle">Expertise technique et créative au service de l'innovation</p>
+    </div>
+
+    <!-- Statistiques -->
+    <div class="quantum-stats">
+      <div class="stat-item" *ngFor="let stat of stats; let i = index"
+           [style.animation-delay]="getAnimationDelay(i)">
+        <div class="stat-icon">{{stat.icon}}</div>
+        <div class="stat-number">{{stat.number}}+</div>
+        <div class="stat-label">{{stat.label}}</div>
+        <div class="stat-glow"></div>
+      </div>
+    </div>
+
+    <!-- Compétences en vedette -->
+    <div class="featured-skills">
+      <h2 class="section-title">Compétences Principales</h2>
+      <div class="featured-grid">
+        <div class="featured-skill" *ngFor="let skill of featuredSkills; let i = index"
+             [style.animation-delay]="getAnimationDelay(i)">
+          <div class="skill-header">
+            <h3 class="skill-name">{{skill.name}}</h3>
+            <span class="skill-level">{{skill.level}}%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-bar" [style.width.%]="skill.level">
+              <div class="progress-glow"></div>
+            </div>
+          </div>
+          <div class="skill-meta">
+            <span class="meta-item">{{skill.years}}+ ans</span>
+            <span class="meta-item">{{skill.projects}}+ projets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catégories de compétences -->
+    <div class="skills-categories">
+      <div class="category" *ngFor="let category of skillCategories; let i = index"
+           [style.animation-delay]="getAnimationDelay(i)">
+        <div class="category-header">
+          <div class="category-icon">{{category.icon}}</div>
+          <h2 class="category-title">{{category.name}}</h2>
+        </div>
+        
+        <div class="skills-list">
+          <div class="skill-item" *ngFor="let skill of category.skills">
+            <div class="skill-info">
+              <span class="skill-name">{{skill.name}}</span>
+              <span class="skill-percentage">{{skill.level}}%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-progress" 
+                   [style.width.%]="skill.level"
+                   [style.background]="skill.color">
+                <div class="progress-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="skills-cta">
+      <h2>Prêt à transformer vos idées en réalité ?</h2>
+      <p>Découvrez comment mes compétences peuvent servir votre projet</p>
+      <button class="quantum-btn">
+        <span>Voir mes projets</span>
+        <div class="btn-glow"></div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay quantique -->
+  <div class="quantum-overlay"></div>
+</div>

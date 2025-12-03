@@ -1,0 +1,36 @@
+<footer class="quantum-glass-footer">
+  <!-- Effets d'arrière-plan -->
+  <div class="glass-layer"></div>
+  <div class="glass-reflection"></div>
+  
+  <!-- Champ de particules quantiques -->
+  <div class="quantum-field">
+    <div *ngFor="let particle of particles" class="quantum-particle" [ngStyle]="particle.style"></div>
+  </div>
+  
+  <!-- Orbites quantiques -->
+  <div class="quantum-orbits">
+    <div class="orbit" *ngFor="let orbit of orbits" [ngStyle]="orbit.style"></div>
+  </div>
+  
+  <!-- Effet de superposition quantique -->
+  <div class="quantum-state" [class.active]="isHovered" [ngStyle]="quantumStateStyle"></div>
+  
+  <!-- Contenu principal du footer -->
+  <div class="footer-content" (mousemove)="onMouseMove($event)">
+    <div class="footer-bottom">
+      <p class="copyright">© 2024 IMANE BOUHABBA. Tous droits réservés.</p>
+      <div class="social-links">
+        <a *ngFor="let social of socialLinks" 
+           class="social-link" 
+           [title]="social.name"
+           [href]="social.link"
+           target="_blank"
+           (mouseenter)="onLinkHover($event, social)"
+           (mouseleave)="onLinkLeave()">
+          <i [class]="social.iconClass"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,43 @@
+<div class="quantum-glass-header">
+  <!-- Effet de profondeur -->
+  <div class="glass-layer"></div>
+  <div class="glass-reflection"></div>
+  
+  <!-- Particules quantiques -->
+  <div class="quantum-field">
+    <div class="quantum-particle" *ngFor="let particle of particles" [ngStyle]="{
+      'width.px': particle.size,
+      'height.px': particle.size,
+      'top.%': particle.top,
+      'left.%': particle.left,
+      'animation-delay.s': particle.animationDelay
+    }"></div>
+  </div>
+  
+  <!-- Orbites quantiques -->
+  <div class="quantum-orbits">
+    <div class="orbit" *ngFor="let orbit of orbits"></div>
+  </div>
+  
+  <!-- Navigation quantique -->
+  <nav class="quantum-nav">
+    <div class="nav-container">
+      <a 
+        *ngFor="let route of routes; let i = index" 
+        class="quantum-nav-item"
+        [class.active]="isActive(route.path)"
+        (click)="navigateTo(route.path)"
+        (mouseenter)="activateQuantumEffect(i, $event)"
+        (mouseleave)="deactivateQuantumEffect()">
+        
+        <span class="nav-glow"></span>
+        <span class="nav-dot"></span>
+        <span class="nav-text">{{ getRouteName(route.path) }}</span>
+        <span class="quantum-connection"></span>
+      </a>
+    </div>
+  </nav>
+  
+  <!-- Effet de superposition quantique -->
+  <div class="quantum-state" [class.active]="quantumActive"></div>
+</div>

@@ -1,0 +1,782 @@
+// Variables de couleurs
+$black: #000000;
+$white: #ffffff;
+$gray: #1a1a1a;
+$dark-gray: #0a0a0a;
+$pink: #ff2a92;
+$pink-glow: rgba(255, 42, 146, 0.6);
+
+.quantum-contact {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, $dark-gray 0%, $black 100%);
+  overflow: hidden;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Fond quantique
+  .quantum-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    .quantum-particle {
+      position: absolute;
+      background: rgba($white, 0.3);
+      border-radius: 50%;
+      animation: quantumFloat 20s infinite ease-in-out;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba($pink, 0.2) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        animation: particlePulse 6s infinite ease-in-out;
+      }
+    }
+    
+    .quantum-wave {
+      position: absolute;
+      width: 200%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, $pink, transparent);
+      opacity: 0.1;
+      animation: waveMove 15s infinite linear;
+      
+      &:nth-child(2) {
+        animation-delay: 3s;
+        animation-duration: 12s;
+      }
+      
+      &:nth-child(3) {
+        animation-delay: 7s;
+        animation-duration: 18s;
+      }
+    }
+    
+    .quantum-orbits {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      
+      .orbit {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background: $pink;
+        border-radius: 50%;
+        box-shadow: 0 0 20px $pink-glow;
+        animation: orbitSpin 15s infinite linear;
+        
+        &:nth-child(1) {
+          animation-delay: 0s;
+          animation-duration: 12s;
+        }
+        
+        &:nth-child(2) {
+          animation-delay: 3s;
+          animation-duration: 18s;
+        }
+        
+        &:nth-child(3) {
+          animation-delay: 6s;
+          animation-duration: 15s;
+        }
+      }
+    }
+  }
+  
+  // Conteneur principal
+  .contact-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    z-index: 2;
+  }
+  
+  // Contenu
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    
+    @media (max-width: 968px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  
+  // Portail quantique
+  .quantum-portal {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 2rem;
+    
+    .portal-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 2px solid rgba($white, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: portalRotate 20s infinite linear;
+      
+      &:nth-child(1) {
+        width: 260px;
+        height: 260px;
+        animation-delay: 0s;
+      }
+      
+      &:nth-child(2) {
+        width: 300px;
+        height: 300px;
+        animation-delay: 5s;
+        animation-direction: reverse;
+      }
+    }
+    
+    .portal-core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+      background: rgba($black, 0.8);
+      box-shadow: 
+        0 0 60px rgba($pink, 0.3),
+        inset 0 0 40px rgba($white, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      .portal-icon {
+        font-size: 4rem;
+        color: $pink;
+        text-shadow: 0 0 20px $pink-glow;
+        animation: iconPulse 3s infinite ease-in-out;
+      }
+    }
+  }
+  
+  // Carte quantique
+  .quantum-card {
+    background: rgba($dark-gray, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba($white, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
+    .card-title {
+      color: $white;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba($pink, 0.3);
+      text-align: center;
+    }
+    
+    .card-subtitle {
+      color: rgba($white, 0.7);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+  }
+  
+  // Formulaire - Correction principale ici
+  // Formulaire - Correction principale ici
+.quantum-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%; // Assure que le formulaire prend toute la largeur disponible
+  box-sizing: border-box; // Inclut le padding dans la largeur
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 0;
+    width: 100%; // Assure que le groupe de formulaire prend toute la largeur
+    box-sizing: border-box; // Inclut le padding dans la largeur
+    
+    label {
+      display: block;
+      color: rgba($white, 0.9);
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+      font-size: 0.9rem;
+      width: 100%; // Assure que le label prend toute la largeur
+      box-sizing: border-box; // Inclut le padding dans la largeur
+    }
+    
+    // S'assurer que les inputs sont bien contenus
+    .input-container {
+      position: relative;
+      width: 100%;
+      box-sizing: border-box; // Inclut le padding dans la largeur
+      
+      .input-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba($white, 0.7);
+        z-index: 2;
+      }
+      
+      .quantum-input, .quantum-textarea {
+        width: 100%;
+        padding: 0.8rem 1rem 0.8rem 3rem;
+        background: rgba($white, 0.05);
+        border: 1px solid rgba($white, 0.1);
+        border-radius: 8px;
+        color: $white;
+        font-family: inherit;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+        box-sizing: border-box; // Inclut le padding dans la largeur
+        
+        &:focus {
+          outline: none;
+          border-color: $pink;
+          box-shadow: 0 0 15px $pink-glow;
+          
+          ~ .input-glow {
+            opacity: 0.3;
+          }
+        }
+        
+        &::placeholder {
+          color: rgba($white, 0.5);
+          font-size: 0.9rem;
+        }
+      }
+      
+      .quantum-textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      
+      .input-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        filter: blur(8px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        border-radius: 8px;
+        box-sizing: border-box; // Inclut le padding dans la largeur
+      }
+    }
+  }
+  
+  // Correction pour le bouton
+  .quantum-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba($pink, 0.2);
+    border: 1px solid rgba($pink, 0.3);
+    border-radius: 8px;
+    color: $white;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    box-sizing: border-box; // Inclut le padding dans la largeur
+    
+    &:hover {
+      background: rgba($pink, 0.3);
+      box-shadow: 0 0 20px $pink-glow;
+      
+      .button-glow {
+        width: 200px;
+        height: 200px;
+        opacity: 0.4;
+      }
+      
+      .button-icon {
+        transform: translateX(5px);
+      }
+    }
+    
+    .button-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
+    
+    .button-icon {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+  }
+}
+  
+  // Bouton quantique
+  .quantum-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba($pink, 0.2);
+    border: 1px solid rgba($pink, 0.3);
+    border-radius: 8px;
+    color: $white;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    
+    &:hover {
+      background: rgba($pink, 0.3);
+      box-shadow: 0 0 20px $pink-glow;
+      
+      .button-glow {
+        width: 200px;
+        height: 200px;
+        opacity: 0.4;
+      }
+      
+      .button-icon {
+        transform: translateX(5px);
+      }
+    }
+    
+    .button-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
+    
+    .button-icon {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+    }
+  }
+  
+  // Connexion quantique
+  .quantum-connection {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 2px;
+    
+    @media (max-width: 968px) {
+      display: none;
+    }
+    
+    .connection-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, $pink, transparent);
+      box-shadow: 0 0 20px $pink-glow;
+    }
+    
+    .connection-node {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: $pink;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px $pink-glow;
+      animation: nodePulse 3s infinite ease-in-out;
+    }
+    
+    .connection-particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: $white;
+      border-radius: 50%;
+      animation: connectionFloat 4s infinite ease-in-out;
+      
+      &:nth-child(3) {
+        top: -10px;
+        left: 20%;
+        animation-delay: 0s;
+      }
+      
+      &:nth-child(4) {
+        bottom: -10px;
+        left: 70%;
+        animation-delay: 2s;
+      }
+    }
+  }
+  
+  // Informations de contact
+// Informations de contact - Version professionnelle
+.contact-info {
+  margin-bottom: 3rem;
+  
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding: 1.2rem;
+    background: rgba($white, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba($white, 0.08);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    &:hover {
+      background: rgba($white, 0.06);
+      border-color: rgba($pink, 0.2);
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .info-icon {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      margin-right: 1.2rem;
+      background: linear-gradient(135deg, rgba($pink, 0.15) 0%, rgba($pink, 0.1) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba($pink, 0.2);
+      
+      i {
+        color: $pink;
+        font-size: 1.2rem;
+      }
+      
+      .icon-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        filter: blur(15px);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+      
+      &:hover .icon-glow {
+        opacity: 0.4;
+      }
+    }
+    
+    .info-content {
+      flex: 1;
+      
+      h3 {
+        color: $white;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0.4rem;
+        letter-spacing: 0.3px;
+      }
+      
+      p {
+        color: rgba($white, 0.8);
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        font-weight: 300;
+      }
+      
+      .info-description {
+        display: block;
+        color: rgba($white, 0.6);
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
+        font-style: italic;
+      }
+    }
+  }
+  
+  // Animation d'apparition séquentielle pour les éléments
+  .info-item:nth-child(1) {
+    animation: fadeInUp 0.6s ease 0.1s both;
+  }
+  
+  .info-item:nth-child(2) {
+    animation: fadeInUp 0.6s ease 0.2s both;
+  }
+  
+  .info-item:nth-child(3) {
+    animation: fadeInUp 0.6s ease 0.3s both;
+  }
+}
+
+// Animation d'apparition
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive pour les informations de contact
+@media (max-width: 768px) {
+  .contact-info {
+    margin-bottom: 2rem;
+    
+    .info-item {
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      
+      .info-icon {
+        width: 42px;
+        height: 42px;
+        margin-right: 1rem;
+        
+        i {
+          font-size: 1.1rem;
+        }
+      }
+      
+      .info-content {
+        h3 {
+          font-size: 1rem;
+        }
+        
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+  // Liens sociaux
+  .social-links {
+    h3 {
+      color: $white;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+      
+      .social-link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem;
+        background: rgba($white, 0.05);
+        border: 1px solid rgba($white, 0.1);
+        border-radius: 6px;
+        color: rgba($white, 0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        
+        &:hover {
+          background: rgba($pink, 0.1);
+          border-color: rgba($pink, 0.3);
+          color: $white;
+          box-shadow: 0 0 15px $pink-glow;
+          
+          .link-glow {
+            width: 80px;
+            height: 80px;
+            opacity: 0.3;
+          }
+        }
+        
+        .link-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          background: radial-gradient(circle, $pink-glow 0%, transparent 70%);
+          transform: translate(-50%, -50%);
+          transition: all 0.5s ease;
+          opacity: 0;
+        }
+        
+        i {
+          margin-right: 0.5rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  // Overlay quantique
+  .quantum-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba($pink, 0.1) 0%,
+      transparent 30%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 3;
+    
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+// Animations
+@keyframes quantumFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, -15px) rotate(5deg); }
+  50% { transform: translate(-15px, 10px) rotate(-5deg); }
+  75% { transform: translate(-20px, 15px) rotate(3deg); }
+}
+
+@keyframes particlePulse {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes portalRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbitSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg) translateX(140px) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) translateX(140px) rotate(-360deg); }
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.3); }
+}
+
+@keyframes connectionFloat {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  50% { transform: translateY(-10px); opacity: 1; }
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 10px $pink-glow; }
+  50% { transform: scale(1.1); text-shadow: 0 0 20px $pink-glow; }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .quantum-contact {
+    padding: 2rem 1rem;
+    
+    .quantum-portal {
+      width: 200px;
+      height: 200px;
+      
+      .portal-core {
+        width: 160px;
+        height: 160px;
+        
+        .portal-icon {
+          font-size: 3rem;
+        }
+      }
+    }
+    
+    .quantum-card {
+      padding: 2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .quantum-contact {
+    .quantum-card {
+      padding: 1.5rem;
+    }
+    
+    .quantum-form {
+      .form-group .input-container {
+        .quantum-input, .quantum-textarea {
+          padding: 0.7rem 0.8rem 0.7rem 2.5rem;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
